@@ -8,23 +8,48 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className="bg-gray-800 text-white p-4">
+        <header className="bg-black/95 text-white p-4 sticky top-0 z-50 ">
             <div className="container mx-auto flex justify-between items-center">
                 <h1 className="text-xl font-bold">Welcome to Artificium</h1>
-                <div className="md:hidden">
-                    <button onClick={toggleMenu} className="text-white focus:outline-none">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
+
+                {/* Mobile Menu Button */}
+                <button 
+                    onClick={toggleMenu} 
+                    className="md:hidden text-white focus:outline-none" 
+                    aria-label="Toggle Menu"
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                {/* Navigation Menu - Desktop */}
+                <nav className="hidden md:flex space-x-6">
+                    <a href="/" className="hover:text-primary">Home</a>
+                    <a href="/about" className="hover:text-primary">About</a>
+                    <a href="/portfolio" className="hover:text-primary">Portfolio</a>
+                    <a href="/services" className="hover:text-primary">Services</a>
+                </nav>
+
+                {/* Contact Us Button (ONLY VISIBLE ON DESKTOP) */}
+                <button className="hidden md:block bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80">
+                    Contact Us
+                </button>
+            </div>
+
+            {/* Mobile Dropdown Menu */}
+            {isOpen && (
+                <div className="md:hidden absolute top-16 left-0 w-full bg-primary/5 text-center py-4 space-y-4 shadow-lg transition-all">
+                    <a href="/" className="block hover:text-primary">Home</a>
+                    <a href="/about" className="block hover:text-primary">About</a>
+                    <a href="/portfolio" className="block hover:text-primary">Portfolio</a>
+                    <a href="/services" className="block hover:text-primary">Services</a>
+                    <button className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80 w-full">
+                        Contact Us
                     </button>
                 </div>
-                <nav className={`md:flex ${isOpen ? 'block' : 'hidden'} w-full md:w-auto`}>
-                    <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
-                        <li><a href="/" className="hover:text-gray-400">Home</a></li>
-                        <li><a href="/about" className="hover:text-gray-400">About</a></li>
-                    </ul>
-                </nav>
-            </div>
+            )}
+
         </header>
     );
 };
