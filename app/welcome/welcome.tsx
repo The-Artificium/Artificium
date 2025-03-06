@@ -28,6 +28,7 @@ export function Welcome() {
       {/* explore section */}
       <section className="bg-black/95 p-3  place-items-center   lg:flex lg:justify-center" >
         <div className="max-w-110 text-white space-y-8 mt-5 mb-10 lg:mt-30  mr-20">
+          <h1>Hello</h1>
           <h1 className="text-3xl md:text-5xl font-semibold">Explore our Gilio team services.</h1>
 
           <p className="text-sm text-gray-200">Nunc convallis semper justo quis tempor. Praesent molestie, lorem sed imperdiet tempor, libero urna semper urna, facilisis vulputate velit arcu vitae mi. Donec ac nisi ex. </p>
